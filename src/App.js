@@ -1,8 +1,12 @@
 import React from 'react'
 import './App.css';
+// * Components
+import SideBar from './components/SideBar/SideBar';
 function App() {
   return (
-    <div>پنل ادمین</div>
+    <div className='app'>
+     < SideBar/>
+    </div>
   )
 }
 
