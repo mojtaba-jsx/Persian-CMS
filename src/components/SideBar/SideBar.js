@@ -1,5 +1,6 @@
 import React from "react";
 import "./SideBar.css";
+import { Link } from "react-router-dom";
 // * React Icons
 import { CiLight } from "react-icons/ci";
 import { CiDark } from "react-icons/ci";
@@ -40,40 +41,40 @@ function SideBar() {
         </h1>
         <ul className="sidebar__menu">
           <li className="sidebar__item active">
-            <a href="#" className="sidebar__link">
+            <Link to="/" className="sidebar__link">
               <IoHomeOutline className="sidebar-icon" />
               صفحه اصلی
-            </a>
+            </Link>
           </li>
           <li className="sidebar__item">
-            <a href="#" className="sidebar__link">
+            <Link to="/products" className="sidebar__link">
               <IoShirtOutline className="sidebar-icon" />
               محصولات
-            </a>
+            </Link>
           </li>
           <li className="sidebar__item">
-            <a href="#" className="sidebar__link">
+            <Link to="/comments" className="sidebar__link">
               <FaComments className="sidebar-icon" />
               کامنت ها
-            </a>
+            </Link>
           </li>
           <li className="sidebar__item">
-            <a href="#" className="sidebar__link">
+            <Link to="/users" className="sidebar__link">
               <HiOutlineUsers className="sidebar-icon" />
               کاربران
-            </a>
+            </Link>
           </li>
           <li className="sidebar__item">
-            <a href="#" className="sidebar__link">
+            <Link to="/orders" className="sidebar__link">
               <MdOutlineRestore className="sidebar-icon" />
               سفارشات
-            </a>
+            </Link>
           </li>
           <li className="sidebar__item">
-            <a href="#" className="sidebar__link">
+            <Link to="/offs" className="sidebar__link">
               <MdOutlineDiscount className="sidebar-icon" />
               تخفیف ها
-            </a>
+            </Link>
           </li>
         </ul>
       </div>
