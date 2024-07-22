@@ -59,6 +59,7 @@
   --white-50:#f0f0f0;
   /* !^ Gray Color */
   --gray: #A2A1A8;
+  --gray-5:#a2a1a81b;
 
   /* ^ Color Options */
   --color1: #30be82;
@@ -96,6 +97,8 @@
 /* * ========= Default Styles ========= */
 body{
     background-color: var(--white-50);
+    display: flex;
+    direction: rtl;
 
 }
 *,body,html{

@@ -1,13 +1,20 @@
-import React from 'react'
-import './App.css';
+import React from "react";
+import "./App.css";
 // * Components
-import SideBar from './components/SideBar/SideBar';
+import SideBar from "./components/SideBar/SideBar";
+import Header from "./components/Header/Header";
 function App() {
   return (
-    <div className='app'>
-     < SideBar/>
-    </div>
-  )
+    <>
+
+        <SideBar />
+        <div className="main">
+          <Header/>
+          {/* {Routes} */}
+        </div>
+
+    </>
+  );
 }
 
-export default App
+export default App;
