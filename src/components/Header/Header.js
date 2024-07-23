@@ -3,6 +3,7 @@ import "../Header/Header.css";
 // ! Icons
 import { CiBellOn } from "react-icons/ci";
 import { CiSearch } from "react-icons/ci";
+import { FaCode } from "react-icons/fa6";
 function Header() {
   return (
     <div className="header">
@@ -17,6 +18,7 @@ function Header() {
 
             <span className="admin-profile__right__infos-role">
               برنامه نویس فرانت اند
+              <FaCode />
             </span>
           </div>
         </div>

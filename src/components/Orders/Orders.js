@@ -1,9 +1,12 @@
-import React from 'react'
-import './Orders.css'
+import React from "react";
+import "./Orders.css";
+import ErrorBox from "../ErrorBox/ErrorBox";
 function Orders() {
   return (
-    <div>Orders</div>
-  )
+    <div>
+      <ErrorBox message={"  سفارشی یافت نشد "} />
+    </div>
+  );
 }
 
-export default Orders
+export default Orders;

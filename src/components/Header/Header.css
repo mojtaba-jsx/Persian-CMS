@@ -5,7 +5,7 @@
   margin: 0 auto;
   border-radius: 0.5rem;
   padding: 1rem;
-  width: 72rem;
+  /* width: 72rem; */
   box-shadow: rgb(204, 219, 232) 3px 3px 6px 0px inset, rgba(255, 255, 255, 0.5) -3px -3px 6px 1px inset;
   
 }
@@ -42,6 +42,9 @@
   font-family: "iranSans-bold", Courier, monospace;
   color: var(--primaryColor-700);
   font-weight: bold;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
 }
 
 .admin-profile__left {

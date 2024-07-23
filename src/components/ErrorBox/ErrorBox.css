@@ -1,0 +1,30 @@
+.cms-empty-error{
+    font-size: 2rem;
+    text-align: center;
+    margin-top: 10rem;
+    padding: 1rem;
+    color: var(--black);
+    border-radius: 0.5rem;
+    font-family: 'iranSans-bold', Courier, monospace;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 20rem;
+    color: var(--color5);
+
+}
+
+.cms-empty-error-title{
+    display: flex;
+    align-items: center;
+    box-shadow: rgb(204, 219, 232) 3px 3px 6px 0px inset, rgba(255, 255, 255, 0.5) -3px -3px 6px 1px inset;
+    border-radius: 1rem;
+    padding: 1rem;
+}
+
+.cms-empty-error-icon{
+    width: 6rem;
+    height: 6rem;
+    fill: var(--color5);
+
+}
