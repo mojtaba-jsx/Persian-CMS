@@ -1,6 +1,26 @@
+.add-products {
+  margin-top: 2rem;
+  box-shadow: rgb(204, 219, 232) 3px 3px 6px 0px inset,
+    rgba(255, 255, 255, 0.5) -3px -3px 6px 1px inset;
+  padding: 1rem;
+  border-radius: 0.5rem;
+}
+
 .add-products__form {
   margin-top: 2rem;
 }
+
+.add-products__title {
+  display: flex;
+  align-items: center;
+  font-size: 1.2rem;
+  font-family: "iranSans-bold", Courier, monospace;
+}
+.add-products__title-icon {
+  width: 2rem;
+  height: 2rem;
+}
+
 .add-products__form div {
   display: flex;
   flex-direction: column;
@@ -27,8 +47,8 @@
   color: var(--dark-500);
 }
 .add-products__form div div input::placeholder {
-    color: var(--dark-500);
-    font-family: 'iranSans-bold', Courier, monospace;
+  color: var(--dark-500);
+  font-family: "iranSans-bold", Courier, monospace;
 }
 
 .add-products-icon {
@@ -37,19 +57,18 @@
   color: var(--primaryColor-900);
   box-shadow: rgb(204, 219, 232) 3px 3px 6px 0px inset,
     rgba(255, 255, 255, 0.5) -3px -3px 6px 1px inset;
-    padding: 0.5rem;
-    border-radius: 0.5rem;
+  padding: 0.5rem;
+  border-radius: 0.5rem;
 }
 
-.add-products__form-btn{
-    padding: 1rem;
-    width: 10rem;
-    border: none;
-    outline: none;
-    margin: 2rem auto;
-    color: var(--white);
-    background-color: var(--primaryColor-800);
-    border-radius: 1rem;
-    cursor: pointer;
-    
+.add-products__form-btn {
+  padding: 1rem;
+  width: 10rem;
+  border: none;
+  outline: none;
+  margin: 2rem auto;
+  color: var(--white);
+  background-color: var(--primaryColor-800);
+  border-radius: 1rem;
+  cursor: pointer;
 }
