@@ -1,0 +1,66 @@
+.product-table-box {
+  padding: 1rem;
+}
+.product-table {
+  margin-top: 2rem;
+  width: 100%;
+  background-color: var(--white);
+  border-radius: 0.5rem;
+  box-shadow: rgba(0, 0, 0, 0.05) 0px 0px 0px 1px,
+    rgb(209, 213, 219) 0px 0px 0px 1px inset;
+}
+
+.product-table__heading-tr {
+  text-align: center;
+  display: flex;
+  padding: 1rem;
+  gap: 2rem;
+  margin-bottom: 1rem;
+}
+
+.products-table-tr {
+  text-align: center;
+  display: flex;
+  align-items: center;
+  padding: 1rem;
+  box-shadow: rgba(0, 0, 0, 0.05) 0px 0px 0px 1px,
+    rgb(209, 213, 219) 0px 0px 0px 1px inset;
+}
+
+.product-table__heading-th {
+  padding: 1rem;
+  /* background-color: red; */
+  width: 25%;
+}
+
+.product-table td {
+  padding: 1rem;
+  display: flex;
+  text-align: center;
+  width: 25%;
+  display: block;
+}
+
+.product-table-img {
+  width: 10rem;
+  border-radius: 1rem;
+  object-fit: cover;
+}
+td {
+  width: 2rem;
+  text-align: center;
+  width: 25%;
+}
+
+.product-table-btn {
+  margin-right: 0.5rem;
+  padding: 0.5rem;
+  border-radius: 0.5rem;
+  border: none;
+  outline: none;
+  background-color: var(--primaryColor-600);
+  color: var(--white);
+  cursor: pointer;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px,
+    rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
+}
