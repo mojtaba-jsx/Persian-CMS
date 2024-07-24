@@ -53,6 +53,7 @@
 
   /* !^ Dark Color */
   --dark-500: #16151c;
+  --dark-5 : rgba(0,0,0,0.5);
   /* !^ Light Color */
   --light: #d9e1e1;
   --white: #ffffff;
