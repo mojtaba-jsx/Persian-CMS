@@ -1,16 +1,32 @@
 import React, { useState } from "react";
 import "./ProductsTable.css";
 import DeleteModal from "../DeleteModal/DeleteModal";
+import DetailsModal from "../DetailsModal/DetailsModal";
+import EditModal from "../EditModal/EditModal";
 function ProductsTable() {
-  const [isShowModal, setIsShowModal] = useState(false);
+  const [isShowDeleteModal, setIsShowDeleteModal] = useState(false);
+  const [isShowDetailsModal, setIsShowDetailsModal] = useState(false);
+  const [isShowEditsModal, setIsShowEditsModal] = useState(false);
 
+  // ! Delete Modal Methods
   const deleteModalCancelAction = () => {
     console.log(" modal closed");
-    setIsShowModal(false);
+    setIsShowDeleteModal(false);
   };
   const deleteModalSubmitAction = () => {
     console.log(" modal submit");
-    setIsShowModal(false);
+    setIsShowDeleteModal(false);
+  };
+
+  // ! Details Modal Methods
+  const closeDetailsModal = () => {
+    setIsShowDetailsModal(false);
+  };
+
+  // ! Edit Modal Methods
+  const updateProductInfos = (event) => {
+    event.preventDefault()
+    console.log("edited product");
   };
 
   return (
@@ -39,22 +55,45 @@ function ProductsTable() {
               <td>92000 تومان</td>
               <td>82</td>
               <td className="table-btns">
-                <button className="product-table-btn">جزئیات</button>
                 <button
                   className="product-table-btn"
-                  onClick={() => setIsShowModal(true)}
+                  onClick={() => setIsShowDetailsModal(true)}
+                >
+                  جزئیات
+                </button>
+                <button
+                  className="product-table-btn"
+                  onClick={() => setIsShowDeleteModal(true)}
                 >
                   حذف
                 </button>
-                <button className="product-table-btn">ویرایش</button>
+                <button
+                  className="product-table-btn"
+                  onClick={() => setIsShowEditsModal(true)}
+                >
+                  ویرایش
+                </button>
               </td>
             </tr>
           </tbody>
         </table>
-        {isShowModal && (
+        {/* Delete Modal */}
+        {isShowDeleteModal && (
           <DeleteModal
             submit={deleteModalSubmitAction}
             cancel={deleteModalCancelAction}
+          />
+        )}
+        {/* Details Modal */}
+
+        {isShowDetailsModal && <DetailsModal hideModal={closeDetailsModal} />}
+
+        {/* Edit Modal */}
+
+        {isShowEditsModal && (
+          <EditModal
+            onClose={() => setIsShowEditsModal(false)}
+            onSubmit={updateProductInfos}
           />
         )}
       </div>
