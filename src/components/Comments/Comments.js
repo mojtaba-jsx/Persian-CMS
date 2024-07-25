@@ -5,8 +5,8 @@ import DeleteModal from "../DeleteModal/DeleteModal";
 function Comments() {
   return (
     <>
-    {/* <ErrorBox message={"  کامنتی یافت نشد "} /> */}
-    <DeleteModal/>
+    <ErrorBox message={"  کامنتی یافت نشد "} />
+    {/* <DeleteModal/> */}
     </>
   );
 }

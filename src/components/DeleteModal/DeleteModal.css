@@ -49,6 +49,7 @@
     outline: none;
     border: none;
     font-family: 'iranSans-bold', Courier, monospace;
+    cursor: pointer;
     color: var(--white);
 }
 
