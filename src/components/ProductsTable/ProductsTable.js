@@ -3,10 +3,11 @@ import "./ProductsTable.css";
 import DeleteModal from "../DeleteModal/DeleteModal";
 import DetailsModal from "../DetailsModal/DetailsModal";
 import EditModal from "../EditModal/EditModal";
+import {AiOutlineDollarCircle} from 'react-icons/ai'
 function ProductsTable() {
   const [isShowDeleteModal, setIsShowDeleteModal] = useState(false);
   const [isShowDetailsModal, setIsShowDetailsModal] = useState(false);
-  const [isShowEditsModal, setIsShowEditsModal] = useState(false);
+  const [isShowEditModal, setIsShowEditModal] = useState(false);
 
   // ! Delete Modal Methods
   const deleteModalCancelAction = () => {
@@ -25,7 +26,7 @@ function ProductsTable() {
 
   // ! Edit Modal Methods
   const updateProductInfos = (event) => {
-    event.preventDefault()
+    event.preventDefault();
     console.log("edited product");
   };
 
@@ -69,7 +70,7 @@ function ProductsTable() {
                 </button>
                 <button
                   className="product-table-btn"
-                  onClick={() => setIsShowEditsModal(true)}
+                  onClick={() => setIsShowEditModal(true)}
                 >
                   ویرایش
                 </button>
@@ -90,12 +91,38 @@ function ProductsTable() {
 
         {/* Edit Modal */}
 
-        {isShowEditsModal && (
-          <EditModal
-            onClose={() => setIsShowEditsModal(false)}
-            onSubmit={updateProductInfos}
-          />
-        )}
+
+        {isShowEditModal && <EditModal
+        onClose={() => setIsShowEditModal(false)}
+        onSubmit={updateProductInfos}
+      >
+
+        <div className="edit-proructs-form-group">
+          <span>
+            <AiOutlineDollarCircle />
+          </span>
+          <input type="text" placeholder="عنوان جدید را وارد کنید" className="edit-product-input" />
+        </div>
+        <div className="edit-proructs-form-group">
+          <span>
+            <AiOutlineDollarCircle />
+          </span>
+          <input type="text" placeholder="عنوان جدید را وارد کنید" className="edit-product-input" />
+        </div>
+        <div className="edit-proructs-form-group">
+          <span>
+            <AiOutlineDollarCircle />
+          </span>
+          <input type="text" placeholder="عنوان جدید را وارد کنید" className="edit-product-input" />
+        </div>
+        <div className="edit-proructs-form-group">
+          <span>
+            <AiOutlineDollarCircle />
+          </span>
+          <input type="text" placeholder="عنوان جدید را وارد کنید" className="edit-product-input" />
+        </div>
+
+      </EditModal>}
       </div>
     </>
   );
