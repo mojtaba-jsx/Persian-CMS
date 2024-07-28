@@ -1,0 +1,108 @@
+/* * ========== Imports ========== */
+@import "./reset.css";
+
+/* * ========= Font Faces ========= */
+@font-face {
+  font-family: "iranSans-bold";
+  src: url("./fonts/iranSans/IRANSansX-Bold.ttf");
+}
+@font-face {
+  font-family: "iranSans-light";
+  src: url("./fonts/iranSans/IRANSansX-Light.ttf");
+}
+@font-face {
+  font-family: "iranSans-medium";
+  src: url("./fonts/iranSans/IRANSansX-Medium.ttf");
+}
+
+/* * ========= Color Variables ========= */
+
+:root {
+  /* !^ Primary Color */
+  --primaryColor-100: #e6e2f8;
+  --primaryColor-200: #cec4f6;
+  --primaryColor-300: #b2a2f9;
+  --primaryColor-400: #9178fa;
+  --primaryColor-500: #7152f3;
+  --primaryColor-600: #5d3de7;
+  --primaryColor-700: #4f31d0;
+  --primaryColor-800: #3517b4;
+  --primaryColor-900: #250c92;
+
+  /* !^ Secondary Color */
+  --secondaryColor-100: #e1f1bc;
+  --secondaryColor-200: #cee993;
+  --secondaryColor-300: #bcde6b;
+  --secondaryColor-400: #afd751;
+  --secondaryColor-500: #a3d139;
+  --secondaryColor-600: #97bd33;
+  --secondaryColor-700: #88a52a;
+  --secondaryColor-800: #798d21;
+  --secondaryColor-900: #626615;
+
+  /* !^ Teritary Color */
+  --teritarYColor-100: #f0b0d9;
+  --teritarYColor-200: #e67bc2;
+  --teritarYColor-300: #d846ab;
+  --teritarYColor-400: #cd0d9b;
+  --teritarYColor-500: #b21589;
+  --teritarYColor-600: #af0a87;
+  --teritarYColor-700: #9b0982;
+  --teritarYColor-800: #8a087c;
+  --teritarYColor-900: #6c0772;
+
+  /* !^ Dark Color */
+  --dark-500: #16151c;
+  --dark-5 : rgba(0,0,0,0.5);
+  /* !^ Light Color */
+  --light: #d9e1e1;
+  --white: #ffffff;
+  --white-50:#f0f0f0;
+  /* !^ Gray Color */
+  --gray: #A2A1A8;
+  --gray-5:#a2a1a81b;
+
+  /* ^ Color Options */
+  --color1: #30be82;
+  --color2: #30beb6;
+  --color3: #5d30be;
+  --color4: #304fbe;
+  --color5: #E4003A;
+}
+/* * ========= BackGround Gradients ========= */
+
+.gradient-1 {
+  background: rgb(127, 190, 48);
+  background: linear-gradient(
+    90deg,
+    rgba(127, 190, 48, 1) 0%,
+    rgba(48, 165, 190, 1) 100%
+  );
+}
+.gradient-2 {
+  background: rgb(48, 190, 182);
+  background: linear-gradient(
+    90deg,
+    rgba(48, 190, 182, 1) 0%,
+    rgba(48, 105, 190, 1) 100%
+  );
+}
+.gradient-3 {
+  background: rgb(93, 48, 190);
+  background: linear-gradient(
+    90deg,
+    rgba(93, 48, 190, 1) 0%,
+    rgba(179, 48, 190, 1) 100%
+  );
+}
+
+/* * ========= Default Styles ========= */
+body{
+    background-color: var(--white-50);
+    display: flex;
+    direction: rtl;
+
+}
+*,body,html{
+    font-family: 'iranSans-medium', Courier, monospace;
+}
