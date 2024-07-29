@@ -7,7 +7,6 @@ function Products() {
   return (
     <>
       <AddNewProduct />
-      <ErrorBox message={"محصولی یافت نشد "} />
       <ProductsTable />
     </>
   );
