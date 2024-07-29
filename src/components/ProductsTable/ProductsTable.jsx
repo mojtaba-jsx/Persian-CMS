@@ -13,6 +13,14 @@ function ProductsTable() {
   const [productID, setProductID] = useState(null);
   const [mainproductInfos, setMainproductInfos] = useState({});
 
+  const [productNewTitle, setProductNewTitle] = useState("");
+  const [productNewPrice, setProductNewPrice] = useState("");
+  const [productNewCount, setProductNewCount] = useState("");
+  const [productNewImg, setProductNewImg] = useState("");
+  const [productNewPopularity, setProductNewPopularity] = useState("");
+  const [productNewSale, setProductNewSale] = useState("");
+  const [productNewColors, setProductNewColors] = useState("");
+
   useEffect(() => {
     getAllproducts();
   }, []);
@@ -106,7 +114,16 @@ function ProductsTable() {
                     </button>
                     <button
                       className="product-table-btn"
-                      onClick={() => setIsShowEditModal(true)}
+                      onClick={() => {
+                        setIsShowEditModal(true);
+                        setProductNewTitle(product.title)
+                        setProductNewPrice(product.price)
+                        setProductNewCount(product.count)
+                        setProductNewImg(product.img)
+                        setProductNewPopularity(product.popularity)
+                        setProductNewSale(product.sale)
+                        setProductNewColors(product.colors)
+                      }}
                     >
                       ویرایش
                     </button>
@@ -161,6 +178,7 @@ function ProductsTable() {
               </span>
               <input
                 type="text"
+                value={productNewTitle}
                 placeholder="عنوان جدید را وارد کنید"
                 className="edit-product-input"
               />
@@ -171,6 +189,7 @@ function ProductsTable() {
               </span>
               <input
                 type="text"
+                value={productNewPrice}
                 placeholder="مبلغ جدید را وارد کنید"
                 className="edit-product-input"
               />
@@ -181,6 +200,7 @@ function ProductsTable() {
               </span>
               <input
                 type="text"
+                value={productNewCount}
                 placeholder="موجودی جدید را وارد کنید"
                 className="edit-product-input"
               />
@@ -191,6 +211,7 @@ function ProductsTable() {
               </span>
               <input
                 type="text"
+                value={productNewImg}
                 placeholder="آدرس کاور جدید را وارد کنید"
                 className="edit-product-input"
               />
@@ -201,6 +222,7 @@ function ProductsTable() {
               </span>
               <input
                 type="text"
+                value={productNewPopularity}
                 placeholder="میزان محبوبیت جدید را وارد کنید"
                 className="edit-product-input"
               />
@@ -211,6 +233,7 @@ function ProductsTable() {
               </span>
               <input
                 type="text"
+                value={productNewSale}
                 placeholder="میزان فروش جدید را وارد کنید"
                 className="edit-product-input"
               />
@@ -221,6 +244,7 @@ function ProductsTable() {
               </span>
               <input
                 type="text"
+                value={productNewColors}
                 placeholder="تعداد رنگ بندی  جدید را وارد کنید"
                 className="edit-product-input"
               />
