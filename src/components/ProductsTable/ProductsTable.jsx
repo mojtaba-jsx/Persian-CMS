@@ -10,14 +10,21 @@ function ProductsTable() {
   const [isShowDetailsModal, setIsShowDetailsModal] = useState(false);
   const [isShowEditModal, setIsShowEditModal] = useState(false);
   const [allProducts, setAllProducts] = useState([]);
+  const [productID, setProductID] = useState(null);
+  const [mainproductInfos, setMainproductInfos] = useState({});
 
   useEffect(() => {
+    getAllproducts();
+  }, []);
+
+  // ! get All Products
+  const getAllproducts = () => {
     fetch("http://localhost:8000/api/products")
       .then((res) => res.json())
       .then((products) => {
         setAllProducts(products);
       });
-  }, []);
+  };
 
   // ! Delete Modal Methods
   const deleteModalCancelAction = () => {
@@ -27,6 +34,15 @@ function ProductsTable() {
   const deleteModalSubmitAction = () => {
     console.log(" modal submit");
     setIsShowDeleteModal(false);
+    fetch(`http://localhost:8000/api/products/${productID}`, {
+      method: "DELETE",
+    })
+      .then((res) => res.json())
+      .then((result) => {
+        console.log(result);
+        setIsShowDeleteModal(false);
+        getAllproducts();
+      });
   };
 
   // ! Details Modal Methods
@@ -72,13 +88,19 @@ function ProductsTable() {
                   <td className="table-btns">
                     <button
                       className="product-table-btn"
-                      onClick={() => setIsShowDetailsModal(true)}
+                      onClick={() => {
+                        setIsShowDetailsModal(true);
+                        setMainproductInfos(product);
+                      }}
                     >
                       جزئیات
                     </button>
                     <button
                       className="product-table-btn"
-                      onClick={() => setIsShowDeleteModal(true)}
+                      onClick={() => {
+                        setIsShowDeleteModal(true);
+                        setProductID(product.id);
+                      }}
                     >
                       حذف
                     </button>
@@ -104,7 +126,27 @@ function ProductsTable() {
         )}
         {/* Details Modal */}
 
-        {isShowDetailsModal && <DetailsModal hideModal={closeDetailsModal} />}
+        {isShowDetailsModal && (
+          <DetailsModal hideModal={closeDetailsModal}>
+            <table className="cms-table">
+              <thead>
+                <tr>
+                  <th>اسم محصول</th>
+                  <th>قیمت محصول</th>
+                  <th>محبوبیت محصول</th>
+                </tr>
+              </thead>
+
+              <tbody>
+                <tr>
+                  <td> {mainproductInfos.title}</td>
+                  <td> {mainproductInfos.price} تومان</td>
+                  <td>{mainproductInfos.popularity}</td>
+                </tr>
+              </tbody>
+            </table>
+          </DetailsModal>
+        )}
 
         {/* Edit Modal */}
 
@@ -129,7 +171,7 @@ function ProductsTable() {
               </span>
               <input
                 type="text"
-                placeholder="عنوان جدید را وارد کنید"
+                placeholder="مبلغ جدید را وارد کنید"
                 className="edit-product-input"
               />
             </div>
@@ -139,7 +181,7 @@ function ProductsTable() {
               </span>
               <input
                 type="text"
-                placeholder="عنوان جدید را وارد کنید"
+                placeholder="موجودی جدید را وارد کنید"
                 className="edit-product-input"
               />
             </div>
@@ -149,7 +191,37 @@ function ProductsTable() {
               </span>
               <input
                 type="text"
-                placeholder="عنوان جدید را وارد کنید"
+                placeholder="آدرس کاور جدید را وارد کنید"
+                className="edit-product-input"
+              />
+            </div>
+            <div className="edit-proructs-form-group">
+              <span>
+                <AiOutlineDollarCircle />
+              </span>
+              <input
+                type="text"
+                placeholder="میزان محبوبیت جدید را وارد کنید"
+                className="edit-product-input"
+              />
+            </div>
+            <div className="edit-proructs-form-group">
+              <span>
+                <AiOutlineDollarCircle />
+              </span>
+              <input
+                type="text"
+                placeholder="میزان فروش جدید را وارد کنید"
+                className="edit-product-input"
+              />
+            </div>
+            <div className="edit-proructs-form-group">
+              <span>
+                <AiOutlineDollarCircle />
+              </span>
+              <input
+                type="text"
+                placeholder="تعداد رنگ بندی  جدید را وارد کنید"
                 className="edit-product-input"
               />
             </div>
