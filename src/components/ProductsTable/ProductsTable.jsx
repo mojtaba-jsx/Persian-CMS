@@ -61,6 +61,30 @@ function ProductsTable() {
   // ! Edit Modal Methods
   const updateProductInfos = (event) => {
     event.preventDefault();
+
+    const productsNewInfos = {
+      title: productNewTitle,
+      price: productNewPrice,
+      count: productNewCount,
+      img: productNewImg,
+      popularity: productNewPopularity,
+      sale: productNewSale,
+      colors: productNewColors,
+    };
+    fetch(`http://localhost:8000/api/products/${productID}`, {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify(productsNewInfos),
+    })
+    .then(res=>res.json())
+    .then(result=>{
+      console.log(result)
+      getAllproducts()
+      setIsShowEditModal(false)
+    })
+
     console.log("edited product");
   };
 
@@ -115,14 +139,15 @@ function ProductsTable() {
                     <button
                       className="product-table-btn"
                       onClick={() => {
+                        setProductID(product.id);
                         setIsShowEditModal(true);
-                        setProductNewTitle(product.title)
-                        setProductNewPrice(product.price)
-                        setProductNewCount(product.count)
-                        setProductNewImg(product.img)
-                        setProductNewPopularity(product.popularity)
-                        setProductNewSale(product.sale)
-                        setProductNewColors(product.colors)
+                        setProductNewTitle(product.title);
+                        setProductNewPrice(product.price);
+                        setProductNewCount(product.count);
+                        setProductNewImg(product.img);
+                        setProductNewPopularity(product.popularity);
+                        setProductNewSale(product.sale);
+                        setProductNewColors(product.colors);
                       }}
                     >
                       ویرایش
@@ -169,7 +194,7 @@ function ProductsTable() {
 
         {isShowEditModal && (
           <EditModal
-            onClose={() => setIsShowEditModal(false)}
+            onClose={(event) => setIsShowEditModal(false)}
             onSubmit={updateProductInfos}
           >
             <div className="edit-proructs-form-group">
@@ -179,6 +204,7 @@ function ProductsTable() {
               <input
                 type="text"
                 value={productNewTitle}
+                onChange={(event)=>setProductNewTitle(event.target.value)}
                 placeholder="عنوان جدید را وارد کنید"
                 className="edit-product-input"
               />
@@ -190,6 +216,7 @@ function ProductsTable() {
               <input
                 type="text"
                 value={productNewPrice}
+                onChange={(event)=>setProductNewPrice(event.target.value)}
                 placeholder="مبلغ جدید را وارد کنید"
                 className="edit-product-input"
               />
@@ -201,6 +228,7 @@ function ProductsTable() {
               <input
                 type="text"
                 value={productNewCount}
+                onChange={(event)=>setProductNewCount(event.target.value)}
                 placeholder="موجودی جدید را وارد کنید"
                 className="edit-product-input"
               />
@@ -212,6 +240,7 @@ function ProductsTable() {
               <input
                 type="text"
                 value={productNewImg}
+                onChange={(event)=>setProductNewImg(event.target.value)}
                 placeholder="آدرس کاور جدید را وارد کنید"
                 className="edit-product-input"
               />
@@ -223,6 +252,7 @@ function ProductsTable() {
               <input
                 type="text"
                 value={productNewPopularity}
+                onChange={(event)=>setProductNewPopularity(event.target.value)}
                 placeholder="میزان محبوبیت جدید را وارد کنید"
                 className="edit-product-input"
               />
@@ -234,6 +264,7 @@ function ProductsTable() {
               <input
                 type="text"
                 value={productNewSale}
+                onChange={(event)=>setProductNewSale(event.target.value)}
                 placeholder="میزان فروش جدید را وارد کنید"
                 className="edit-product-input"
               />
@@ -245,6 +276,7 @@ function ProductsTable() {
               <input
                 type="text"
                 value={productNewColors}
+                onChange={(event)=>setProductNewColors(event.target.value)}
                 placeholder="تعداد رنگ بندی  جدید را وارد کنید"
                 className="edit-product-input"
               />
