@@ -1,15 +1,14 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import "./ProductsTable.css";
 import DeleteModal from "../DeleteModal/DeleteModal";
 import DetailsModal from "../DetailsModal/DetailsModal";
 import EditModal from "../EditModal/EditModal";
 import ErrorBox from "../ErrorBox/ErrorBox";
 import { AiOutlineDollarCircle } from "react-icons/ai";
-function ProductsTable() {
+function ProductsTable({allProducts,getAllProducts}) {
   const [isShowDeleteModal, setIsShowDeleteModal] = useState(false);
   const [isShowDetailsModal, setIsShowDetailsModal] = useState(false);
   const [isShowEditModal, setIsShowEditModal] = useState(false);
-  const [allProducts, setAllProducts] = useState([]);
   const [productID, setProductID] = useState(null);
   const [mainproductInfos, setMainproductInfos] = useState({});
 
@@ -21,18 +20,7 @@ function ProductsTable() {
   const [productNewSale, setProductNewSale] = useState("");
   const [productNewColors, setProductNewColors] = useState("");
 
-  useEffect(() => {
-    getAllproducts();
-  }, []);
 
-  // ! get All Products
-  const getAllproducts = () => {
-    fetch("http://localhost:8000/api/products")
-      .then((res) => res.json())
-      .then((products) => {
-        setAllProducts(products);
-      });
-  };
 
   // ! Delete Modal Methods
   const deleteModalCancelAction = () => {
@@ -49,7 +37,7 @@ function ProductsTable() {
       .then((result) => {
         console.log(result);
         setIsShowDeleteModal(false);
-        getAllproducts();
+        getAllProducts();
       });
   };
 
@@ -81,7 +69,7 @@ function ProductsTable() {
     .then(res=>res.json())
     .then(result=>{
       console.log(result)
-      getAllproducts()
+      getAllProducts()
       setIsShowEditModal(false)
     })
 
@@ -105,7 +93,7 @@ function ProductsTable() {
               </tr>
             </thead>
             <tbody>
-              {allProducts.map((product) => (
+              {allProducts.reverse().map((product) => (
                 <tr className="products-table-tr" key={product.id}>
                   <td>
                     <img

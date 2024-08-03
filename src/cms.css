@@ -39,3 +39,50 @@
 .cms-table th{
     font-family: 'iranSans-bold', Courier, monospace;
 }
+
+
+.cms-main {
+    margin-top: 60px;
+    padding: 20px;
+    border-radius: 25px;
+}
+
+.cms-table {
+    margin-top: 20px;
+    width: 100%;
+    border-radius: 10px;
+    background-color: var(--white);
+}
+
+.cms-table tr {
+    border: 4px solid var(--primaryColor-400);
+    border-radius: 1rem;
+    margin-bottom: 1rem;
+}
+
+.cms-table th, .cms-table td {
+    padding: 20px;
+    /* border: 4px solid var(--primaryColor-200); */
+
+
+}
+
+
+.cms-table button {
+    width: 5rem;
+    margin-bottom: 0.5rem;
+    background-color: var(--primaryColor-900);
+    color: var(--white);
+    padding: 8px 15px;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+.cms-table__btns{
+    display: flex;
+    align-items: center;
+    border: none;
+    justify-content: space-around;
+    gap: 1rem;
+}
+
