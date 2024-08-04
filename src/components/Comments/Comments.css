@@ -19,3 +19,14 @@
     background-color: var(--color5);
     cursor: pointer;
   }
+
+  .edit-comment-text{
+    width: 100%;
+    margin-top: 2rem;
+    background-color: var(--primaryColor-200);
+    resize: none;
+    outline: none;
+    border-radius: 0.5rem;
+    padding: 0.2rem;
+
+  }
