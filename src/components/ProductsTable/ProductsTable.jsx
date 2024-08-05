@@ -150,6 +150,7 @@ function ProductsTable({allProducts,getAllProducts}) {
         {/* Delete Modal */}
         {isShowDeleteModal && (
           <DeleteModal
+            title= {'آِا از حذف محصول مطمئن هستید ؟ '}
             submit={deleteModalSubmitAction}
             cancel={deleteModalCancelAction}
           />

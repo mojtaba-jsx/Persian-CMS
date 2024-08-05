@@ -9,6 +9,7 @@ export default function Comments() {
   const [allComments, setAllComments] = useState([]);
   const [isShowDetailsModal, setIsShowDetailsModal] = useState(false);
   const [isShowDeleteModal, setIsShowDeleteModal] = useState(false);
+  const [isShowAcceptModal, setIsShowAcceptModal] = useState(false);
   const [isShowEditModal, setIsShowEditModal] = useState(false);
   const [mainCommentBody, setMainCommentBody] = useState("");
   const [commentID, setCommentID] = useState(null);
@@ -37,9 +38,33 @@ export default function Comments() {
     gettAllComments();
   };
 
-  const updateComment = () => {
-    console.log("comment updated");
-    setIsShowEditModal(false);
+  const updateComment = (event) => {
+    event.preventDefault();
+
+    fetch(`http://localhost:8000/api/comments/${commentID}`, {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        body: mainCommentBody,
+      }),
+    })
+      .then((res) => res.json())
+      .then((result) => {
+        console.log(result);
+        setIsShowEditModal(false);
+        getAllComments();
+      });
+  };
+
+  const closAcceptmodal = () => {
+    console.log("close accept modal comment");
+    setIsShowAcceptModal(false)
+  };
+
+  const acceptComment = () => {
+    console.log("accept comment ");
   };
 
   return (
@@ -86,12 +111,15 @@ export default function Comments() {
                     onClick={() => {
                       setIsShowEditModal(true);
                       setMainCommentBody(comment.body);
+                      setCommentID(comment.id);
                     }}
                   >
                     ویرایش
                   </button>
                   <button>پاسخ</button>
-                  <button>تایید</button>
+                  <button onClick={()=>{
+                    setIsShowAcceptModal(true)
+                  }}>تایید</button>
                 </td>
               </tr>
             ))}
@@ -111,7 +139,11 @@ export default function Comments() {
       )}
 
       {isShowDeleteModal && (
-        <DeleteModal cancel={closeDeleteModal} submit={deleteComment} />
+        <DeleteModal
+          title={"آیا با حذف کامنت موافق هستید ؟ "}
+          cancel={closeDeleteModal}
+          submit={deleteComment}
+        />
       )}
 
       {isShowEditModal && (
@@ -122,6 +154,14 @@ export default function Comments() {
             value={mainCommentBody}
           ></textarea>
         </EditModal>
+      )}
+
+      {isShowAcceptModal && (
+        <DeleteModal
+          title={"آبا تایید کامنت موافق هستید ؟"}
+          cancel={closAcceptmodal}
+          submit={acceptComment}
+        />
       )}
     </div>
   );
