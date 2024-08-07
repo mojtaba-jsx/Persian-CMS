@@ -1,8 +1,11 @@
 .edit-modal-form{
-    width: 400px;
+    width: 800px;
     padding: 2rem;
+    height: 30rem;
     background-color: var(--white);
     text-align: center;
+    overflow: scroll;
+
 }
 
 .edit-modal-form h1 {
@@ -18,4 +21,5 @@
     background-color: var(--primaryColor-800);
     font-size: 1.2rem;
     cursor: pointer;
+    
 }

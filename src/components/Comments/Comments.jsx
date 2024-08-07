@@ -10,15 +10,17 @@ export default function Comments() {
   const [isShowDetailsModal, setIsShowDetailsModal] = useState(false);
   const [isShowDeleteModal, setIsShowDeleteModal] = useState(false);
   const [isShowAcceptModal, setIsShowAcceptModal] = useState(false);
+  const [isShowRejectModal, setIsShowRejectModal] = useState(false);
   const [isShowEditModal, setIsShowEditModal] = useState(false);
   const [mainCommentBody, setMainCommentBody] = useState("");
   const [commentID, setCommentID] = useState(null);
+  
 
   useEffect(() => {
-    gettAllComments();
+    getAllComments();
   }, []);
 
-  function gettAllComments() {
+  function getAllComments() {
     fetch("http://localhost:8000/api/comments")
       .then((res) => res.json())
       .then((comments) => setAllComments(comments));
@@ -35,7 +37,7 @@ export default function Comments() {
       .then((res) => res.json())
       .then((result) => console.log(result));
     setIsShowDeleteModal(false);
-    gettAllComments();
+    getAllComments();
   };
 
   const updateComment = (event) => {
@@ -60,11 +62,36 @@ export default function Comments() {
 
   const closAcceptmodal = () => {
     console.log("close accept modal comment");
-    setIsShowAcceptModal(false)
+    setIsShowAcceptModal(false);
   };
 
   const acceptComment = () => {
+    fetch(`http://localhost:8000/api/comments/accept/${commentID}`, {
+      method: "POST",
+    })
+      .then((res) => res.json())
+      .then((result) => {
+        console.log(result);
+        setIsShowAcceptModal(false);
+        getAllComments();
+      });
     console.log("accept comment ");
+  };
+
+  const closRejectmodal = () => {
+    setIsShowRejectModal(false);
+    console.log("reject modal closed");
+  };
+  const rejectComment = () => {
+    fetch(`http://localhost:8000/api/comments/reject/${commentID}`,{
+      method:'POST'
+    })
+    .then(result =>{
+      console.log(result);
+      setIsShowRejectModal(false);
+      getAllComments()
+    })
+    console.log("coment rejected");
   };
 
   return (
@@ -117,9 +144,26 @@ export default function Comments() {
                     ویرایش
                   </button>
                   <button>پاسخ</button>
-                  <button onClick={()=>{
-                    setIsShowAcceptModal(true)
-                  }}>تایید</button>
+
+                  {comment.isAccept === 0 ? (
+                    <button
+                      onClick={() => {
+                        setIsShowAcceptModal(true);
+                        setCommentID(comment.id);
+                      }}
+                    >
+                      تایید
+                    </button>
+                  ) : (
+                    <button
+                      onClick={() => {
+                        setIsShowRejectModal(true);
+                        setCommentID(comment.id);
+                      }}
+                    >
+                      رد
+                    </button>
+                  )}
                 </td>
               </tr>
             ))}
@@ -161,6 +205,13 @@ export default function Comments() {
           title={"آبا تایید کامنت موافق هستید ؟"}
           cancel={closAcceptmodal}
           submit={acceptComment}
+        />
+      )}
+      {isShowRejectModal && (
+        <DeleteModal
+          title={"آبا رد کامنت موافق هستید ؟"}
+          cancel={closRejectmodal}
+          submit={rejectComment}
         />
       )}
     </div>
