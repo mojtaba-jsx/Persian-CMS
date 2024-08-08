@@ -11,6 +11,17 @@ function Users() {
   const [isShowEditModal, setIsShowEditModal] = useState(false);
   const [userdID, setUserID] = useState(false);
 
+  const [userNewFirsname, setNewUserFirsname] = useState("");
+  const [userNewLastname, setNewUserLastname] = useState("");
+  const [userNewUsername, setNewUserUsername] = useState("");
+  const [userNewPassword, setNewUserPassword] = useState("");
+  const [userNewPhone, setNewUserPhone] = useState("");
+  const [userNewCity, setNewUserCity] = useState("");
+  const [userNewEmail, setNewUserEmail] = useState("");
+  const [userNewAddress, setNewUserAddress] = useState("");
+  const [userNewScore, setNewUserScore] = useState("");
+  const [userNewBuy, setNewUserBuy] = useState("");
+
   const getAllUsers = () => {
     useEffect(() => {
       fetch("http://localhost:8000/api/users")
@@ -39,17 +50,15 @@ function Users() {
     getAllUsers();
   };
 
-  const closeEditModal = ()=>{
-    setIsShowEditModal(false)
-  }
+  const closeEditModal = () => {
+    setIsShowEditModal(false);
+  };
 
-  const updateUser = (event)=>{
-    event.preventDefault()
-    console.log('user updated');
-    setIsShowEditModal(false)
-
-    
-  }
+  const updateUser = (event) => {
+    event.preventDefault();
+    console.log("user updated");
+    setIsShowEditModal(false);
+  };
   return (
     <>
       {users.length ? (
@@ -89,7 +98,17 @@ function Users() {
                     <button
                       onClick={() => {
                         setIsShowEditModal(true);
-                        setUserID(user.id)
+                        setUserID(user.id);
+                        setNewUserFirsname(user.firsname);
+                        setNewUserLastname(user.lastname);
+                        setNewUserUsername(user.username);
+                        setNewUserPassword(user.password);
+                        setNewUserPhone(user.phone);
+                        setNewUserCity(user.city);
+                        setNewUserEmail(user.email);
+                        setNewUserAddress(user.address);
+                        setNewUserScore(user.score);
+                        setNewUserBuy(user.buy);
                       }}
                     >
                       ویرایش
@@ -119,9 +138,11 @@ function Users() {
               <AiOutlineDollarCircle />
             </span>
             <input
+              onChange={(event) => setNewUserFirsname(event.target.value)}
+              value={userNewFirsname}
               type="text"
               className="edit-user-info-input"
-              placeholder="مقدار جدید را وارد نمایید"
+              placeholder="نام جدید را وارد نمایید"
             />
           </div>
 
@@ -130,9 +151,11 @@ function Users() {
               <AiOutlineDollarCircle />
             </span>
             <input
+              onChange={(event) => setNewUserLastname(event.target.value)}
+              value={userNewLastname}
               type="text"
               className="edit-user-info-input"
-              placeholder="مقدار جدید را وارد نمایید"
+              placeholder="نام خانوادگی جدید را وارد نمایید"
             />
           </div>
 
@@ -141,9 +164,11 @@ function Users() {
               <AiOutlineDollarCircle />
             </span>
             <input
+              onChange={(event) => setNewUserUsername(event.target.value)}
+              value={userNewUsername}
               type="text"
               className="edit-user-info-input"
-              placeholder="مقدار جدید را وارد نمایید"
+              placeholder="نام کاربری جدید را وارد نمایید"
             />
           </div>
 
@@ -152,20 +177,11 @@ function Users() {
               <AiOutlineDollarCircle />
             </span>
             <input
+              onChange={(event) => setNewUserPassword(event.target.value)}
+              value={userNewPassword}
               type="text"
               className="edit-user-info-input"
-              placeholder="مقدار جدید را وارد نمایید"
-            />
-          </div>
-          
-          <div className="edit-user-info-input-group">
-            <span>
-              <AiOutlineDollarCircle />
-            </span>
-            <input
-              type="text"
-              className="edit-user-info-input"
-              placeholder="مقدار جدید را وارد نمایید"
+              placeholder="رمز عبور جدید را وارد نمایید"
             />
           </div>
 
@@ -174,9 +190,11 @@ function Users() {
               <AiOutlineDollarCircle />
             </span>
             <input
+              onChange={(event) => setNewUserPhone(event.target.value)}
+              value={userNewPhone}
               type="text"
               className="edit-user-info-input"
-              placeholder="مقدار جدید را وارد نمایید"
+              placeholder="شماره تلفن جدید را وارد نمایید"
             />
           </div>
 
@@ -185,9 +203,11 @@ function Users() {
               <AiOutlineDollarCircle />
             </span>
             <input
+              onChange={(event) => setNewUserCity(event.target.value)}
+              value={userNewCity}
               type="text"
               className="edit-user-info-input"
-              placeholder="مقدار جدید را وارد نمایید"
+              placeholder="شهر جدید را وارد نمایید"
             />
           </div>
 
@@ -196,9 +216,11 @@ function Users() {
               <AiOutlineDollarCircle />
             </span>
             <input
+              onChange={(event) => setNewUserEmail(event.target.value)}
+              value={userNewEmail}
               type="text"
               className="edit-user-info-input"
-              placeholder="مقدار جدید را وارد نمایید"
+              placeholder="ایمیل جدید را وارد نمایید"
             />
           </div>
 
@@ -207,9 +229,11 @@ function Users() {
               <AiOutlineDollarCircle />
             </span>
             <input
+              onChange={(event) => setNewUserAddress(event.target.value)}
+              value={userNewAddress}
               type="text"
               className="edit-user-info-input"
-              placeholder="مقدار جدید را وارد نمایید"
+              placeholder="آدرس جدید را وارد نمایید"
             />
           </div>
 
@@ -218,9 +242,24 @@ function Users() {
               <AiOutlineDollarCircle />
             </span>
             <input
+              onChange={(event) => setNewUserScore(event.target.value)}
+              value={userNewScore}
               type="text"
               className="edit-user-info-input"
-              placeholder="مقدار جدید را وارد نمایید"
+              placeholder="امتیاز جدید را وارد نمایید"
+            />
+          </div>
+
+          <div className="edit-user-info-input-group">
+            <span>
+              <AiOutlineDollarCircle />
+            </span>
+            <input
+              onChange={(event) => setNewUserBuy(event.target.value)}
+              value={userNewBuy}
+              type="text"
+              className="edit-user-info-input"
+              placeholder="مقدار خرید جدید را وارد نمایید"
             />
           </div>
         </EditModal>
