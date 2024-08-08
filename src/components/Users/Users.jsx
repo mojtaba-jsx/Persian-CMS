@@ -44,10 +44,10 @@ function Users() {
       .then((res) => res.json())
       .then((result) => {
         console.log(result);
+        getAllUsers();
       });
     console.log("user removed");
     setIsShowDeleteModal(false);
-    getAllUsers();
   };
 
   const closeEditModal = () => {
@@ -56,8 +56,32 @@ function Users() {
 
   const updateUser = (event) => {
     event.preventDefault();
-    console.log("user updated");
+    const userNewInfos = {
+      firsname: userNewFirsname,
+      lastname: userNewLastname,
+      username: userNewUsername,
+      password: userNewPassword,
+      phone: userNewPhone,
+      city: userNewCity,
+      email: userNewEmail,
+      address: userNewAddress,
+      score: userNewScore,
+      buy: userNewBuy,
+    };
+    fetch(`http://localhost:8000/api/users/${userdID}`, {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(userNewInfos),
+    })
+      .then((res) => res.json)
+      .then((result) => {
+        console.log(result);
+        getAllUsers();
+      });
     setIsShowEditModal(false);
+    console.log("user updated");
   };
   return (
     <>
@@ -228,13 +252,13 @@ function Users() {
             <span>
               <AiOutlineDollarCircle />
             </span>
-            <input
+            <textarea
               onChange={(event) => setNewUserAddress(event.target.value)}
               value={userNewAddress}
               type="text"
               className="edit-user-info-input"
               placeholder="آدرس جدید را وارد نمایید"
-            />
+            ></textarea>
           </div>
 
           <div className="edit-user-info-input-group">

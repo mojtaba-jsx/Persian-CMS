@@ -19,5 +19,7 @@
     width: 100%;
   }
   
-  .modal{
-  }
+textarea{
+  resize: none;
+  height: 10rem;
+}
