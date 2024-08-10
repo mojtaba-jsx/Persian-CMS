@@ -35,11 +35,15 @@
   margin-top: 2rem;
   gap: 2rem;
 }
-.sidebar__menu li.active {
+.sidebar__menu a.active {
   border-right: 4px solid var(--primaryColor-500);
   background-color: var(--primaryColor-200);
 }
 
+.sidebar__menu a:hover{
+  background-color: var(--gray-5);
+  color: var(--primaryColor-500);
+}
 .sidebar__item {
   /* background-color: red; */
   padding: 0.5rem;

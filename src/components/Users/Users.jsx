@@ -3,13 +3,16 @@ import "./Users.css";
 import ErrorBox from "../ErrorBox/ErrorBox";
 import DeleteModal from "../DeleteModal/DeleteModal";
 import EditModal from "../EditModal/EditModal";
+import DetailsModal from "../DetailsModal/DetailsModal";
 import { AiOutlineDollarCircle } from "react-icons/ai";
 
 function Users() {
   const [users, setUsers] = useState([]);
   const [isShowDeleteModal, setIsShowDeleteModal] = useState(false);
   const [isShowEditModal, setIsShowEditModal] = useState(false);
+  const [isShowDetailsModal, setIsShowDetailsModal] = useState(false);
   const [userdID, setUserID] = useState(false);
+  const [mainUserInfo, setMainUserInfo] = useState([]);
 
   const [userNewFirsname, setNewUserFirsname] = useState("");
   const [userNewLastname, setNewUserLastname] = useState("");
@@ -83,6 +86,11 @@ function Users() {
     setIsShowEditModal(false);
     console.log("user updated");
   };
+
+  const closeDetailsModal = () => {
+    setIsShowDetailsModal(false);
+    console.log("close");
+  };
   return (
     <>
       {users.length ? (
@@ -118,7 +126,14 @@ function Users() {
                     >
                       حذف
                     </button>
-                    <button>جزئیات</button>
+                    <button
+                      onClick={() => {
+                        setMainUserInfo(user);
+                        setIsShowDetailsModal(true);
+                      }}
+                    >
+                      جزئیات
+                    </button>
                     <button
                       onClick={() => {
                         setIsShowEditModal(true);
@@ -287,6 +302,30 @@ function Users() {
             />
           </div>
         </EditModal>
+      )}
+
+      {isShowDetailsModal && (
+        <DetailsModal hideModal={closeDetailsModal}>
+          <table className="cms-table">
+            <thead>
+              <tr>
+                <th>شهر کاربر</th>
+                <th>آدرس کاربر</th>
+                <th>امتیاز کاربر</th>
+                <th>میزان خرید کاربر</th>
+              </tr>
+            </thead>
+
+            <tbody>
+              <tr>
+                <td> {mainUserInfo.city}</td>
+                <td> {mainUserInfo.address}</td>
+                <td>{mainUserInfo.score}</td>
+                <td>{mainUserInfo.buy}</td>
+              </tr>
+            </tbody>
+          </table>
+        </DetailsModal>
       )}
     </>
   );

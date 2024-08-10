@@ -1,6 +1,6 @@
 import React from "react";
 import "./SideBar.css";
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 // * React Icons
 import { CiLight } from "react-icons/ci";
 import { CiDark } from "react-icons/ci";
@@ -39,43 +39,36 @@ function SideBar() {
           </svg>
           به داشبورد خود خوش آمدید
         </h1>
-        <ul className="sidebar__menu">
-          <li className="sidebar__item active">
-            <Link to="/" className="sidebar__link">
-              <IoHomeOutline className="sidebar-icon" />
-              صفحه اصلی
-            </Link>
-          </li>
-          <li className="sidebar__item">
-            <Link to="/products" className="sidebar__link">
-              <IoShirtOutline className="sidebar-icon" />
-              محصولات
-            </Link>
-          </li>
-          <li className="sidebar__item">
-            <Link to="/comments" className="sidebar__link">
-              <FaComments className="sidebar-icon" />
-              کامنت ها
-            </Link>
-          </li>
-          <li className="sidebar__item">
-            <Link to="/users" className="sidebar__link">
-              <HiOutlineUsers className="sidebar-icon" />
-              کاربران
-            </Link>
-          </li>
-          <li className="sidebar__item">
-            <Link to="/orders" className="sidebar__link">
-              <MdOutlineRestore className="sidebar-icon" />
-              سفارشات
-            </Link>
-          </li>
-          <li className="sidebar__item">
-            <Link to="/offs" className="sidebar__link">
-              <MdOutlineDiscount className="sidebar-icon" />
-              تخفیف ها
-            </Link>
-          </li>
+        <ul className="sidebar__menu" >
+          <NavLink className="sidebar__item  sidebar__link" to={"/"}>
+            <IoHomeOutline className="sidebar-icon" />
+            صفحه اصلی
+          </NavLink>
+
+          <NavLink className="sidebar__item sidebar__link" to={"/products"}>
+            <IoShirtOutline className="sidebar-icon" />
+            محصولات
+          </NavLink>
+
+          <NavLink className="sidebar__item sidebar__link" to={"/comments"}>
+            <FaComments className="sidebar-icon" />
+            کامنت ها
+          </NavLink>
+          <NavLink
+            className="sidebar__item sidebar__link sidebar__link"
+            to={"/users"}
+          >
+            <HiOutlineUsers className="sidebar-icon" />
+            کاربران
+          </NavLink>
+          <NavLink className="sidebar__item sidebar__link" to={"/orders"}>
+            <MdOutlineRestore className="sidebar-icon" />
+            سفارشات
+          </NavLink>
+          <NavLink className="sidebar__item sidebar__link" to={"/offs"}>
+            <MdOutlineDiscount className="sidebar-icon" />
+            تخفیف ها
+          </NavLink>
         </ul>
       </div>
       {/* Dark / Light Buttons */}
